@@ -1,13 +1,16 @@
 <template>
     <form>
-        <h1>Log In</h1>
+        <h1>Sign Up</h1>
         <div>
+            <label for="email">Name</label>
+            <input type="text" name="name" required>
+            <div style="height: 10px"></div>
             <label for="email">Email</label>
             <input type="text" name="email" required>
             <div style="height: 10px"></div>
             <label for="email">Password</label>
             <input type="password" name="password" required>
-            <button>Log In</button>
+            <button>Sign Up</button>
         </div>
     </form>
 </template>
@@ -15,7 +18,7 @@
 <script>
 
 export default {
-    name: 'LoginModal',
+    name: 'SignUpModal',
 }
 </script>
 
@@ -23,7 +26,7 @@ export default {
     form{
         border-radius: 10px;
         background-color: white;
-        width: clamp(300px, 25%, 30%);
+        width: 25%;
         height: 60%;
         position: absolute;
         z-index: 10;
@@ -49,7 +52,7 @@ export default {
             border: solid 1px #bfbfbf;
             font-size: 1rem;
             outline: none;
-
+            
             &:focus{
                 // outline: solid #42b983;
                 border: solid 1px #42b983;

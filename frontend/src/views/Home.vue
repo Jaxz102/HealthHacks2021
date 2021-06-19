@@ -5,23 +5,51 @@
         <h1>Health Tasker</h1>
         <p>A website that helps you organize and track your daily tasks developing healthy habits</p>
         <div class="entry">
-            <button class="entry__login">Login</button>
-            <button class="entry__signup">Create Account</button>
+            <button class="entry__login" v-on:click="showLogin">Login</button>
+            <button class="entry__signup" v-on:click="showSignin">Create Account</button>
         </div>
+        
     </div>
+    <section v-if="loginshow || signupshow" v-on:click="closeModal"></section>
+    <Login v-if="loginshow"/>
+    <Signup v-if="signupshow"/>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
 import Login from '@/components/LoginModal.vue';
+import Signup from '@/components/SignUpModal.vue';
 
 export default {
     name: 'Home',
     components: {
         HelloWorld,
-        Login
-    }
+        Login,
+        Signup,
+    },
+    data(){
+        return{
+            loginshow: false,
+            signupshow: false,
+        }
+    },
+    methods:{
+        showLogin(){
+            this.loginshow = true;
+            console.log("SHOW LOGIN");
+        },
+
+        showSignin(){
+            this.signupshow = true;
+            console.log("SHOW SIGNIN");
+        },
+
+        closeModal(){
+            this.loginshow = false;
+            this.signupshow = false;
+        }
+    }   
 }
 </script>
 
@@ -29,7 +57,7 @@ export default {
     .home{
         width: 100%;
         height: 100%;
-        background-color: bisque;
+        background-color: #aae6cb;
         position: relative;
         z-index: 0;
     }
@@ -88,5 +116,15 @@ export default {
                 background-color: #d3d3d3;
             }
         }
+    }
+
+    section{
+        top: 0;
+        opacity: 40%;
+        background-color: #2c3e50;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
     }
 </style>
